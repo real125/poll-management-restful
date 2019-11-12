@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="1" author="yuri_schmidt">
+		
+		<createTable tableName="poll"> 
+			<column autoIncrement="true"  name="id" type="bigint" >
+				<constraints primaryKey="true" primaryKeyName="pk_poll"/>
+			</column>
+			<column name="poll_name" type="varchar(255)"/>
+			<column name="start_date" type="date"/>
+			<column name="end_date" type="date"/>
+			<column name="activity" type="boolean"/>
+		</createTable>
+		
+		<createTable tableName="polls_questions">
+			<column autoIncrement="true" name="id" type="bigint" >
+				<constraints  primaryKey="true" primaryKeyName="pk_question"/>
+			</column>
+			<column name="question" type="varchar(512)"/>
+			<column name="display_order" type="integer"></column>
+			<column name="poll_id" type="bigint" />
+		</createTable>
+		
+			<addForeignKeyConstraint
+                constraintName="fk_poll_questions" baseTableName="polls_questions"
+                baseColumnNames="poll_id" referencedTableName="poll" 
+                referencedColumnNames="id"/>
+			
+	</changeSet>
+<!--	
+	<changeSet id="2" author="yuri_schmidt">
+		<insert tableName="poll">
+			<column name="id" value="1" />
+			<column name="poll_name" value="poll one" />
+			<column name="start_date" value="2019-10-10" />
+			<column name="end_date" value="2019-11-10"></column>
+			<column name="activity" value="true" />
+		</insert>
+		<insert tableName="poll">
+			<column name="id" value="2" />
+			<column name="poll_name" value="poll two" />
+			<column name="start_date" value="2019-10-10" />
+			<column name="end_date" value="2019-11-10"></column>
+			<column name="activity" value="false" />
+		</insert>
+		<insert tableName="poll">
+			<column name="id" value="3" />
+			<column name="poll_name" value="poll three" />
+			<column name="start_date" value="2019-10-10" />
+			<column name="end_date" value="2019-11-10"></column>
+			<column name="activity" value="false" />
+		</insert>
+		
+	</changeSet>
+		
+
+	<changeSet id="3" author="yuri_schmidt">
+		<insert tableName="polls_questions">
+			<column name="id" value="1" />
+			<column name="question" value="question one" />
+			<column name="display_order" value="1" />
+			<column name="poll_id" value="1"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="2" />
+			<column name="question" value="question two" />
+			<column name="display_order" value="2" />
+			<column name="poll_id" value="1"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="3" />
+			<column name="question" value="question three" />
+			<column name="display_order" value="3" />
+			<column name="poll_id" value="1"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="4" />
+			<column name="question" value="question four" />
+			<column name="display_order" value="4" />
+			<column name="poll_id" value="1"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="5" />
+			<column name="question" value="question five" />
+			<column name="display_order" value="5" />
+			<column name="poll_id" value="1"></column>
+		</insert>
+	</changeSet>
+
+	<changeSet id="4" author="yuri_schmidt">
+		<insert tableName="polls_questions">
+			<column name="id" value="6" />
+			<column name="question" value="question one" />
+			<column name="display_order" value="1" />
+			<column name="poll_id" value="2"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="7" />
+			<column name="question" value="question two" />
+			<column name="display_order" value="2" />
+			<column name="poll_id" value="2"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="8" />
+			<column name="question" value="question three" />
+			<column name="display_order" value="3" />
+			<column name="poll_id" value="2"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="9" />
+			<column name="question" value="question four" />
+			<column name="display_order" value="4" />
+			<column name="poll_id" value="2"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="10" />
+			<column name="question" value="question five" />
+			<column name="display_order" value="5" />
+			<column name="poll_id" value="2"></column>
+		</insert>
+	</changeSet>
+
+	<changeSet id="5" author="yuri_schmidt">
+		<insert tableName="polls_questions">
+			<column name="id" value="11" />
+			<column name="question" value="question one" />
+			<column name="display_order" value="1" />
+			<column name="poll_id" value="3"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="12" />
+			<column name="question" value="question two" />
+			<column name="display_order" value="2" />
+			<column name="poll_id" value="3"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="13" />
+			<column name="question" value="question three" />
+			<column name="display_order" value="3" />
+			<column name="poll_id" value="3"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="14" />
+			<column name="question" value="question four" />
+			<column name="display_order" value="4" />
+			<column name="poll_id" value="3"></column>
+		</insert>
+		<insert tableName="polls_questions">
+			<column name="id" value="15" />
+			<column name="question" value="question five" />
+			<column name="display_order" value="5" />
+			<column name="poll_id" value="3"></column>
+		</insert>
+	</changeSet>
+	-->
+</databaseChangeLog>
