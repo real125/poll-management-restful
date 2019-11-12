@@ -17,9 +17,9 @@ To launch the project
 
 !!!ATTENTION!!!
 
-For POST /createpoll
+For POST /createpoll  -  populates the tables
 
-and PUT /update/{pollId}
+and PUT /update/{pollId}  -  updates the tables
 
 for request BODY use such json structure:
 
