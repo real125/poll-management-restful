@@ -1,5 +1,7 @@
 # poll-management-restful
 Poll management RESTful service
+
+
 To launch the project
 1. Clone the project from github.
 2. Create 'poll-management' schema(database) on your PostreSQL.
